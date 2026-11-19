@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BL AGRO INTEGRATED GLOBAL LTD | Premium Commodities</title>
+    <link rel="stylesheet" href="output.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom Visual Enhancements */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .hero-gradient-text {
+            background: linear-gradient(90deg, #166534, #22c55e, #166534);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: textShine 4s linear infinite;
+        }
+        @keyframes textShine {
+            to { background-position: 200% center; }
+        }
+        .product-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .product-card:hover {
+            transform: translateY(-12px) scale(1.02);
+        }
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="bg-zinc-50 text-zinc-900 font-sans antialiased">
+
+    <!-- NAVIGATION -->
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-zinc-100 shadow-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-10 h-10 bg-emerald-600 rounded-xl flex items-center justify-center text-white shadow-md shadow-emerald-200">
+                    <i class="fas fa-leaf text-lg"></i>
+                </div>
+                <span class="font-black text-xl tracking-tight text-zinc-900">BL AGRO <span class="text-emerald-600">INTEGRATED GLOBAL LTD</span></span>
+            </div>
+            <div class="hidden md:flex items-center space-x-8 font-medium text-zinc-600">
+                <a href="#home" class="hover:text-emerald-600 transition">Home</a>
+                <a href="#products" class="hover:text-emerald-600 transition">Products</a>
+                <a href="#management" class="hover:text-emerald-600 transition">Management</a>
+                <a href="#contact" class="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-xl shadow-lg shadow-emerald-600/10 transition">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="relative min-h-[85vh] flex items-center bg-gradient-to-br from-zinc-900 via-zinc-800 to-emerald-950 text-white overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="container mx-auto px-6 py-20 relative z-10">
+  
+  <!-- CSS Grid: 1 column on mobile, 2 columns on large screens (lg:) -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    
+    <!-- LEFT COLUMN: Text and Buttons -->
+    <div>
+      <span class="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest">
+        Global Commodity Trading
+      </span>
+      
+      <h1 class="text-5xl md:text-6xl font-black tracking-tight mt-6 mb-6 leading-tight">
+        Connecting Local Resources to <br/><span class="text-emerald-400">Global Markets.</span>
+      </h1>
+      
+      <p class="text-zinc-300 text-lg md:text-xl mb-6 leading-relaxed">
+        Reach out to us today for quotes, logistics, and supply chain consultations.
+      </p>
+      
+      <p class="text-zinc-300 text-base leading-relaxed mb-8">
+        <strong class="text-emerald-400">BL AGRO INTEGRATED LTD</strong> is a premier export and logistics firm dedicated to supplying high-grade Nigerian resources to the international market. Our primary operations focus on the bulk supply of essential <strong>Agro Commodities</strong> including <strong>Ginger, Soybeans, Hibiscus Flower, Bitter Kola, Premium Cashew Nuts, Sesame seeds, and Cocoa.</strong> In addition to our agricultural reach, we are established players in the <strong>Solid Minerals</strong> sector, facilitating the trade and export of <strong>Tantalite, Coal, Lithium, Gemstones, and Industrial Charcoal.</strong> By leveraging a robust local supply chain and strict quality benchmarks, we provide global partners with consistent, high-purity shipments tailored to industrial demand.
+      </p>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-wrap gap-4">
+        <a href="#products" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-8 py-4 rounded-xl shadow-xl shadow-emerald-900/30 transition-all">
+          Explore Products
+        </a>
+        <a href="#contact" class="bg-zinc-800/80 hover:bg-zinc-700 text-white font-bold px-8 py-4 rounded-xl border border-zinc-700 backdrop-blur-sm transition-all">
+          Contact Us
+        </a>
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN: Flier Image -->
+    <div class="flex justify-center lg:justify-end">
+      <img src="flier.jpg" alt="BL AGRO AFFAIRS INTEGRATED LTD" class="w-full max-w-md rounded-3xl shadow-lg border border-zinc-200/10 block">
+    </div>
+
+  </div>
+</div>
+        </div>
+    </section>
+
+    <!-- MISSION & OVERVIEW -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-3xl mx-auto text-center mb-12">
+                <p class="text-xl text-zinc-700 leading-relaxed">
+                    We export <strong>Solid Minerals</strong> (Gemstone, Tantalite, Lithium, Barite, Coal) and <strong>Premium Agro Products</strong> (Soybeans, Ginger, Cashew Nuts, Dried Hibiscus).
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
+                <div class="bg-zinc-50 p-8 rounded-3xl shadow-xl border-l-8 border-emerald-600">
+                    <h3 class="text-2xl font-bold text-zinc-900 mb-4 italic">"Our Mission"</h3>
+                    <p class="text-zinc-700 leading-relaxed font-medium">
+                        To deliver <span class="text-emerald-700 font-bold">trusted export services</span>, offer competitive pricing, and ensure professional, hygienic packaging to customers across the globe.
+                    </p>
+                    <div class="mt-6 p-4 bg-emerald-50 rounded-xl border border-emerald-100">
+                        <p class="text-sm text-emerald-800 font-bold underline mb-1">CALL ON US TODAY</p>
+                        <p class="text-xs text-zinc-600">Bridging the gap between Nigerian quality and global demand.</p>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="flex items-start">
+                        <span class="bg-emerald-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0 mt-1 mr-4">1</span>
+                        <div>
+                            <h4 class="text-lg font-bold text-zinc-800 mb-1">Agro Commodities</h4>
+                            <p class="text-sm text-zinc-600">Sourcing, Logistics, and Export of Ginger, Zobo Leaves, Soybeans, Bitter Kola, Cocoa Seeds, Sesame Seeds, and Charcoal.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <span class="bg-emerald-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0 mt-1 mr-4">2</span>
+                        <div>
+                            <h4 class="text-lg font-bold text-zinc-800 mb-1">Quality Assurance</h4>
+                            <p class="text-sm text-zinc-600">Strict adherence to premium global standards with dynamic inspections on each shipment.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== UNIFIED CORE COMMODITIES SECTION ==================== -->
+    <section id="products" class="py-24 bg-zinc-100">
+        <div class="container mx-auto px-6">
+            
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <span class="bg-emerald-100 text-emerald-800 border border-emerald-200 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest inline-block mb-3">
+                    Premium Export Inventory
+                </span>
+                <h2 class="text-4xl font-black text-zinc-900 tracking-tight">Our Core Commodities</h2>
+                <div class="h-1.5 w-20 bg-emerald-500 mt-4 mx-auto rounded-full"></div>
+                <p class="text-zinc-600 mt-4 max-w-2xl mx-auto text-base">
+                    Strictly adhering to international purity metrics, we source and distribute strategic agricultural cash crops tailored to international market demands.
+                </p>
+            </div>
+
+            <!-- Unified Grid for All 7 Agro Commodities -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
+                
+                <!-- DRIED GINGER CARD -->
+                <div class="product-card bg-white rounded-[2.5rem] p-8 border border-zinc-200/80 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="w-full h-48 rounded-2xl overflow-hidden mb-6 shadow-sm border border-zinc-100 bg-zinc-50">
+                            <img src="ginger.jpg" alt="Dried Ginger" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="font-black text-2xl text-zinc-900 mb-3 tracking-tight">Dried Ginger</h4>
+                        <p class="text-zinc-600 text-sm leading-relaxed mb-6">Expertly sun-dried and split ginger roots with high concentration of essential oils for industrial use.</p>
+                    </div>
+                    <p class="text-orange-700 text-xs font-bold uppercase tracking-wider">Premium Quality Grade A</p>
+                </div>
+
+                <!-- HIBISCUS FLOWERS CARD -->
+                <div class="product-card bg-white rounded-[2.5rem] p-8 border border-zinc-200/80 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="w-full h-48 rounded-2xl overflow-hidden mb-6 shadow-sm border border-zinc-100 bg-zinc-50">
+                            <img src="hibiscus.jpg" alt="Hibiscus Flowers" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="font-black text-2xl text-zinc-900 mb-3 tracking-tight">Hibiscus Flowers</h4>
+                        <p class="text-zinc-600 text-sm leading-relaxed mb-6">Deep red Zobo leaves processed under strict hygiene for food, beverage, and pharmaceutical exports.</p>
+                    </div>
+                    <p class="text-rose-700 text-xs font-bold uppercase tracking-wider">Pure Organic Origin</p>
+                </div>
+
+                <!-- BITTER KOLA CARD -->
+                <div class="product-card bg-white rounded-[2.5rem] p-8 border border-zinc-200/80 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="w-full h-48 rounded-2xl overflow-hidden mb-6 shadow-sm border border-zinc-100 bg-zinc-50">
+                            <img src="bitter-kola.jpg" alt="Bitter Kola" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="font-black text-2xl text-zinc-900 mb-3 tracking-tight">Bitter Kola</h4>
+                        <p class="text-zinc-600 text-sm leading-relaxed mb-6">Premium quality Garcinia Kola, sourced for medicinal, industrial, and traditional purposes with high potency.</p>
+                    </div>
+                    <p class="text-emerald-700 text-xs font-bold uppercase tracking-wider">Export Grade A++</p>
+                </div>
+
+                <!-- PREMIUM CASHEW NUTS CARD -->
+                <div class="product-card bg-white rounded-[2.5rem] p-8 border border-zinc-200/80 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="w-full h-48 rounded-2xl overflow-hidden mb-6 shadow-sm border border-zinc-100 bg-zinc-50">
+                            <img src="Cashew.jpg" alt="Premium Cashew Nuts" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="font-black text-2xl text-zinc-900 mb-3 tracking-tight">Premium Cashew Nuts</h4>
+                        <p class="text-zinc-600 text-sm leading-relaxed mb-6">High-yield raw cashew nuts carefully dried, graded, and optimized for international processing baselines.</p>
+                    </div>
+                    <p class="text-amber-700 text-xs font-bold uppercase tracking-wider">Export Grade</p>
+                </div>
+
+                <!-- MAIN CROP COCOA CARD -->
+                <div class="product-card bg-white rounded-[2.5rem] p-8 border border-zinc-200/80 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="w-full h-48 rounded-2xl overflow-hidden mb-6 shadow-sm border border-zinc-100 bg-zinc-50">
+                            <img src="Cocoa.jpg" alt="Main Crop Cocoa" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="font-black text-2xl text-zinc-900 mb-3 tracking-tight">Main Crop Cocoa</h4>
+                        <p class="text-zinc-600 text-sm leading-relaxed mb-6">Main crop cocoa beans thoroughly fermented and dried to meet strict premium chocolate manufacturing standards.</p>
+                    </div>
+                    <p class="text-emerald-700 text-xs font-bold uppercase tracking-wider">Premium Cocoa Seeds</p>
+                </div>
+
+                <!-- NATURAL SESAME SEEDS CARD -->
+                <div class="product-card bg-white rounded-[2.5rem] p-8 border border-zinc-200/80 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="w-full h-48 rounded-2xl overflow-hidden mb-6 shadow-sm border border-zinc-100 bg-zinc-50">
+                            <img src="sesame.jpg" alt="Natural Sesame Seeds" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="font-black text-2xl text-zinc-900 mb-3 tracking-tight">Natural Sesame Seeds</h4>
+                        <p class="text-zinc-600 text-sm leading-relaxed mb-6">High-protein, machine-cleaned white and yellow sesame seeds ideal for global oil extraction and confectionery use.</p>
+                    </div>
+                    <p class="text-yellow-700 text-xs font-bold uppercase tracking-wider">High Oil Content</p>
+                </div>
+
+                <!-- SOYBEANS CARD -->
+                <div class="product-card bg-white rounded-[2.5rem] p-8 border border-zinc-200/80 shadow-sm flex flex-col justify-between mx-auto lg:col-span-3 lg:max-w-md w-full">
+                    <div>
+                        <div class="w-full h-48 rounded-2xl overflow-hidden mb-6 shadow-sm border border-zinc-100 bg-zinc-50">
+                            <img src="soybeans.jpg" alt="Soybeans" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="font-black text-2xl text-zinc-900 mb-3 tracking-tight">Soybeans</h4>
+                        <p class="text-zinc-600 text-sm leading-relaxed mb-6">High-protein, machine-cleaned yellow soybeans ideal for global oil extraction and animal feed production.</p>
+                    </div>
+                    <p class="text-blue-700 text-xs font-bold uppercase tracking-wider">High Protein / Clean Grade</p>
+                </div>
+
+            </div>
+
+            <!-- Specialized Small-Scale Export banner -->
+            <div class="bg-white p-8 md:p-12 rounded-[2.5rem] border border-zinc-200 shadow-sm max-w-6xl mx-auto">
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                    <div class="max-w-2xl">
+                        <h3 class="text-2xl font-black text-zinc-900 tracking-tight mb-3">Specialized Small-Scale Export</h3>
+                        <p class="text-zinc-600 text-base leading-relaxed">
+                            In addition to bulk trade, we provide specialized small-scale export for premium commodities including 
+                            <strong>oven-dried catfish, palm oil, crayfish, and dried snails</strong>. Our process ensures that high-quality Nigerian staples—like 
+                            <strong>unripe plantain flour, beans flour, rice flour, stone-free garri, and spices</strong>—are hygienically packaged and ready for safe global transit.
+                        </p>
+                    </div>
+                    <div class="bg-emerald-50 text-emerald-700 px-6 py-4 rounded-2xl border border-emerald-100 flex-shrink-0 text-center font-bold text-sm w-full md:w-auto">
+                        <i class="fas fa-box-open text-2xl mb-2 block"></i> Custom Packaging Available
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==================== SOLID MINERALS SECTION ==================== -->
+    <section id="minerals" class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            
+            <div class="text-center mb-16">
+                <span class="bg-emerald-100 text-emerald-800 border border-emerald-200 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest inline-block mb-3">
+                    Solid Minerals Division
+                </span>
+                <h2 class="text-4xl font-black text-zinc-900 tracking-tight">Our Solid Minerals</h2>
+                <div class="h-1.5 w-20 bg-emerald-500 mt-4 mx-auto rounded-full"></div>
+                <p class="text-zinc-600 mt-4 max-w-2xl mx-auto text-base">
+                    Sourcing clean, high-purity solid raw minerals and industrial components optimized for international industrial baselines.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Lithium Media Block -->
+                <div class="product-card bg-white rounded-3xl overflow-hidden border border-zinc-200/80 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="relative overflow-hidden h-52 bg-zinc-900">
+                            <video controls playsinline class="w-full h-full object-cover bg-black opacity-90">
+                                <source src="Minerals.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="font-black text-xl text-zinc-900 mb-2 tracking-tight">Coal & Mineral Exploration</h4>
+                            <p class="text-xs text-emerald-600 font-bold uppercase tracking-wider mb-3">Site Video Analysis / High Carbon Content</p>
+                            <p class="text-zinc-600 text-sm leading-relaxed">
+                                High-calorific fossil energy reserves and minerals sourced cleanly for heavy manufacturing processing factories, metallurgy systems, and smelting plants.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <a href="#contact" class="w-full text-center block bg-zinc-50 border border-zinc-200 text-zinc-800 font-bold py-3 px-4 rounded-xl text-xs uppercase tracking-wider hover:bg-emerald-600 hover:text-white hover:border-emerald-600 transition duration-200">
+                            Inquire Bulk Logistics
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Lithium Ore -->
+                <div class="product-card bg-white rounded-3xl overflow-hidden border border-zinc-200/80 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="relative overflow-hidden h-52 bg-zinc-900">
+                            <img src="Lithium 3.jpg" alt="Lithium Ore" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h4 class="font-black text-xl text-zinc-900 mb-2 tracking-tight">Premium Lithium Ore</h4>
+                            <p class="text-xs text-emerald-600 font-bold uppercase tracking-wider mb-3">High-Purity Spodumene Grade</p>
+                            <p class="text-zinc-600 text-sm leading-relaxed">
+                                Sourced across rich mineral complexes, offering high concentration density optimal for manufacturing global energy cells and structural alloys.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <a href="#contact" class="w-full text-center block bg-zinc-50 border border-zinc-200 text-zinc-800 font-bold py-3 px-4 rounded-xl text-xs uppercase tracking-wider hover:bg-emerald-600 hover:text-white hover:border-emerald-600 transition duration-200">
+                            Request Analysis Data
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tantalite -->
+                <div class="product-card bg-white rounded-3xl overflow-hidden border border-zinc-200/80 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="relative overflow-hidden h-52 bg-zinc-900">
+                            <img src="tantalite.jpg" alt="Tantalite Ore" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h4 class="font-black text-xl text-zinc-900 mb-2 tracking-tight">High-Grade Tantalite</h4>
+                            <p class="text-xs text-emerald-600 font-bold uppercase tracking-wider mb-3">Coltan Derivative / High Ta2O5</p>
+                            <p class="text-zinc-600 text-sm leading-relaxed">
+                                Premium quality Tantalite ore matching strict international standards, essential for capacitors, micro-electronics, and aerospace manufacturing components.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <a href="#contact" class="w-full text-center block bg-zinc-50 border border-zinc-200 text-zinc-800 font-bold py-3 px-4 rounded-xl text-xs uppercase tracking-wider hover:bg-emerald-600 hover:text-white hover:border-emerald-600 transition duration-200">
+                            Get Pricing Quote
+                        </a>
+                    </div>
+                </div>
+
+               
+
+                <!-- Industrial Charcoal -->
+                <div class="product-card bg-white rounded-3xl overflow-hidden border border-zinc-200/80 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="relative overflow-hidden h-52 bg-zinc-900">
+                            <img src="industrial-charcoal.jpg" alt="Industrial Charcoal" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h4 class="font-black text-xl text-zinc-900 mb-2 tracking-tight">Industrial Charcoal</h4>
+                            <p class="text-xs text-emerald-600 font-bold uppercase tracking-wider mb-3">High-Quality Carbon Black</p>
+                            <p class="text-zinc-600 text-sm leading-relaxed">
+                                Premium carbon black produced through controlled thermal decomposition of hydrocarbons, suitable for various industrial applications including rubber manufacturing and ink production.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <a href="#contact" class="w-full text-center block bg-zinc-50 border border-zinc-200 text-zinc-800 font-bold py-3 px-4 rounded-xl text-xs uppercase tracking-wider hover:bg-emerald-600 hover:text-white hover:border-emerald-600 transition duration-200">
+                            Request Specifications
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOARD OF MANAGEMENT -->
+    <!-- ==================== EXECUTIVE & OPERATIONS TEAM ==================== -->
+    <section id="management" class="py-24 bg-zinc-50 border-t border-zinc-200/60">
+        <div class="container mx-auto px-6">
+            
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <span class="bg-emerald-100 text-emerald-800 border border-emerald-200 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest inline-block mb-3">
+                    Corporate Leadership
+                </span>
+                <h3 class="text-3xl md:text-4xl font-black text-zinc-900 tracking-tight">Operations & Management Team</h3>
+                <div class="h-1.5 w-20 bg-emerald-500 mt-4 mx-auto rounded-full"></div>
+                <p class="text-zinc-500 mt-4 max-w-2xl mx-auto text-base leading-relaxed">
+                    A dedicated executive team anchoring farm-gate aggregation, strict quality compliance, and seamless international trade partnerships.
+                </p>
+            </div>
+            
+            <!-- ==================== EXECUTIVE & OPERATIONS TEAM ==================== -->
+    <section id="management" class="py-24 bg-zinc-50 border-t border-zinc-200/60">
+        <div class="container mx-auto px-6">
+            
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <span class="bg-emerald-100 text-emerald-800 border border-emerald-200 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest inline-block mb-3">
+                    Corporate Leadership
+                </span>
+                <h3 class="text-3xl md:text-4xl font-black text-zinc-900 tracking-tight">Operations & Management Team</h3>
+                <div class="h-1.5 w-20 bg-emerald-500 mt-4 mx-auto rounded-full"></div>
+                <p class="text-zinc-500 mt-4 max-w-2xl mx-auto text-base leading-relaxed">
+                    A dedicated executive team anchoring farm-gate aggregation, strict quality compliance, and seamless international trade partnerships.
+                </p>
+            </div>
+            
+            <!-- Perfectly Aligned Grid (Equal Heights) -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto items-stretch">
+                
+                <!-- 1. BISMARCK EMEREOLE -->
+                <div class="bg-white rounded-[2rem] border border-zinc-200/80 shadow-sm p-6 sm:p-8 flex flex-col sm:flex-row gap-6 sm:gap-8 items-center sm:items-start h-full transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <!-- Flawless Circular Image -->
+                    <div class="flex-shrink-0 w-36 h-36 rounded-full overflow-hidden border-[6px] border-emerald-50 shadow-sm bg-zinc-100">
+                        <img src="bismarck.jpg" alt="Mr. Bismarck Emereole" class="w-full h-full object-cover object-center">
+                    </div>
+                    <!-- Rich Bio -->
+                    <div class="flex-1 text-center sm:text-left flex flex-col justify-center">
+                        <h4 class="font-black text-2xl text-zinc-900 tracking-tight">Mr. Bismarck Emereole</h4>
+                        <p class="text-emerald-600 font-bold uppercase text-[11px] tracking-wider mt-1.5 mb-3">Operations Manager</p>
+                        <p class="text-zinc-600 text-sm leading-relaxed">
+                            As the operational anchor of BL Agro Affairs, Mr. Emereole brings extensive expertise in supply chain optimization. He spearheads end-to-end facility operations, oversees direct farm-gate aggregation, and ensures the seamless execution of bulk export fulfillment to international markets.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 2. LAURA B. EMEREOLE -->
+                <div class="bg-white rounded-[2rem] border border-zinc-200/80 shadow-sm p-6 sm:p-8 flex flex-col sm:flex-row gap-6 sm:gap-8 items-center sm:items-start h-full transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <!-- Flawless Circular Image -->
+                    <div class="flex-shrink-0 w-36 h-36 rounded-full overflow-hidden border-[6px] border-emerald-50 shadow-sm bg-zinc-100">
+                        <img src="laura.jpg" alt="Laura B. Emereole" class="w-full h-full object-cover object-center">
+                    </div>
+                    <!-- Rich Bio -->
+                    <div class="flex-1 text-center sm:text-left flex flex-col justify-center">
+                        <h4 class="font-black text-2xl text-zinc-900 tracking-tight"> Mrs. Laura B. Emereole</h4>
+                        <p class="text-emerald-600 font-bold uppercase text-[11px] tracking-wider mt-1.5 mb-3">Quality Control Lead</p>
+                        <p class="text-zinc-600 text-sm leading-relaxed">
+                            Laura meticulously directs the company’s quality assurance frameworks. She oversees comprehensive testing protocols, batch auditing, and strict compliance with European phytosanitary regulations, guaranteeing every shipment meets precise moisture parameters and premium grading.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 3. IMOH USSENUDOH (Moved to 3rd Position) -->
+                <div class="bg-white rounded-[2rem] border border-zinc-200/80 shadow-sm p-6 sm:p-8 flex flex-col sm:flex-row gap-6 sm:gap-8 items-center sm:items-start h-full transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <!-- Flawless Circular Image -->
+                    <div class="flex-shrink-0 w-36 h-36 rounded-full overflow-hidden border-[6px] border-emerald-50 shadow-sm bg-zinc-100">
+                        <img src="imoh.jpg" alt="Imoh Ussenudoh" class="w-full h-full object-cover object-center">
+                    </div>
+                    <!-- Rich Bio -->
+                    <div class="flex-1 text-center sm:text-left flex flex-col justify-center">
+                        <h4 class="font-black text-2xl text-zinc-900 tracking-tight"> Mr. Imoh Ussenudoh</h4>
+                        <p class="text-emerald-600 font-bold uppercase text-[11px] tracking-wider mt-1.5 mb-3">Business Developer & UK Liaison</p>
+                        <p class="text-zinc-600 text-sm leading-relaxed">
+                            Stationed at the forefront of our global expansion, Imoh serves as the vital commercial bridge to the European market. He manages key B2B relationships, aligns operations with UK import standards, and guarantees a transparent, reliable cross-border partnership.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 4. MR. GODWIN (Moved to 4th Position) -->
+                <div class="bg-white rounded-[2rem] border border-zinc-200/80 shadow-sm p-6 sm:p-8 flex flex-col sm:flex-row gap-6 sm:gap-8 items-center sm:items-start h-full transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <!-- Flawless Circular Image -->
+                    <div class="flex-shrink-0 w-36 h-36 rounded-full overflow-hidden border-[6px] border-emerald-50 shadow-sm bg-zinc-100">
+                        <img src="godwin.jpg" alt="Mr. Godwin" class="w-full h-full object-cover object-center">
+                    </div>
+                    <!-- Rich Bio -->
+                    <div class="flex-1 text-center sm:text-left flex flex-col justify-center">
+                        <h4 class="font-black text-2xl text-zinc-900 tracking-tight">Mr. Godwin</h4>
+                        <p class="text-emerald-600 font-bold uppercase text-[11px] tracking-wider mt-1.5 mb-3">Procurement Lead</p>
+                        <p class="text-zinc-600 text-sm leading-relaxed">
+                            Driving our grassroots sourcing strategy, Mr. Godwin manages critical relationships with local agricultural cooperatives. He is responsible for sustainable supply chain intake, ensuring fair-trade practices, and securing high-yield raw materials directly from the farm-gate.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+                </div>
+            </div>
+        </div>
+    </section>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CONTACT & INQUIRY SECTION ==================== -->
+    <section id="contact" class="py-24 bg-zinc-900 text-white relative">
+        <div class="absolute inset-0 opacity-5 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:24px_24px]"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
+                
+                <!-- Office Contact Info Column -->
+                <div class="flex flex-col justify-between space-y-10">
+                    <div>
+                        <span class="text-emerald-400 font-bold text-xs uppercase tracking-widest block mb-3">Get In Touch</span>
+                        <h2 class="text-4xl font-black tracking-tight mb-6">Ready to Partner With Us?</h2>
+                        <p class="text-zinc-400 text-base leading-relaxed mb-8">
+                            Whether you need a quick quote on shipping container metrics, analysis papers on chemical purity parameters, or long-term logistics processing setups, our dedicated terminal team is standing by.
+                        </p>
+                        
+                        <div class="space-y-6">
+                            <!-- Head Office Box -->
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-zinc-800 rounded-xl flex items-center justify-center text-emerald-400 mr-4 border border-zinc-700/50 flex-shrink-0">
+                                    <i class="fas fa-building text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-sm text-zinc-300 uppercase tracking-wider">Corporate Head Office</h4>
+                                    <p class="text-zinc-400 text-sm mt-1 leading-relaxed">
+                                        [PLOT 23 ROAD 15 FHA GONIN GORA 
+
+]<br>
+                                        Kaduna, Nigeria
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Operational Office Box -->
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-zinc-800 rounded-xl flex items-center justify-center text-emerald-400 mr-4 border border-zinc-700/50 flex-shrink-0">
+                                    <i class="fas fa-cogs text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-sm text-zinc-300 uppercase tracking-wider">Operational Office</h4>
+                                    <p class="text-zinc-400 text-sm mt-1 leading-relaxed">
+                                        [3B WUKARI STREET OFF KATSINA ROAD KADUNA]<br>
+                                       Kaduna, Nigeria
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Phone Box -->
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-zinc-800 rounded-xl flex items-center justify-center text-emerald-400 mr-4 border border-zinc-700/50 flex-shrink-0">
+                                    <i class="fas fa-phone-alt text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-sm text-zinc-300 uppercase tracking-wider">Call </h4>
+                                    <p class="text-zinc-400 text-sm mt-1">+234 802 3445 713 | +234 803 1751 435</p>
+                                    <h4 class="font-bold text-sm text-zinc-300 uppercase tracking-wider">WhatsApp</h4>
+                                    <p class="mt-1">
+                                        <a href="https://wa.me/2349071472161" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-medium transition duration-200 inline-flex items-center gap-1.5">
+                                            +234 907 1472 161 <i class="fab fa-whatsapp text-xs"></i>
+                                        </a>
+                                    </p>
+                                </div>     
+                            </div>
+
+                            <!-- Email Box -->
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-zinc-800 rounded-xl flex items-center justify-center text-emerald-400 mr-4 border border-zinc-700/50 flex-shrink-0">
+                                    <i class="fas fa-envelope text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-sm text-zinc-300 uppercase tracking-wider">Email Channels</h4>
+                                    <p class="text-zinc-400 text-sm mt-1">info@blagrointegrated.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inquiry Form Box (Formspree Connected) -->
+                <div class="bg-zinc-800/80 border border-zinc-700/60 p-8 md:p-10 rounded-[2.5rem] backdrop-blur-sm shadow-xl">
+                    <h3 class="text-2xl font-black mb-2 tracking-tight">Send an Inquiry</h3>
+                    <p class="text-zinc-400 text-xs mb-6">Fill out the fields below and our logistics desk will follow up promptly.</p>
+                    
+                    <form action="https://formspree.io/f/mgaengdk" method="POST" class="space-y-5">
+                        <div>
+                            <label class="block text-xs font-bold text-zinc-400 uppercase tracking-wider mb-2">Full Name</label>
+                            <input type="text" name="name" required placeholder="John Doe" 
+                                class="w-full bg-zinc-900 border border-zinc-700/80 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-emerald-500 transition duration-200">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-zinc-400 uppercase tracking-wider mb-2">Email Address</label>
+                            <input type="email" name="email" required placeholder="johndoe@global.com" 
+                                class="w-full bg-zinc-900 border border-zinc-700/80 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-emerald-500 transition duration-200">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-zinc-400 uppercase tracking-wider mb-2">Message / Procurement Order Details</label>
+                            <textarea name="message" rows="4" required placeholder="Specify cargo tonnage requirement or chemical spec data rules..." 
+                                class="w-full bg-zinc-900 border border-zinc-700/80 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-emerald-500 transition duration-200 resize-none"></textarea>
+                        </div>
+
+                        <button type="submit" 
+                            class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 rounded-xl text-sm transition shadow-lg shadow-emerald-900/40">
+                            Submit Inquiry <i class="fas fa-paper-plane ml-2 text-xs"></i>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CLEAN FOOTER -->
+    <footer class="bg-zinc-950 text-zinc-500 py-8 border-t border-zinc-800/40">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-xs">&copy; 2026 BL AGRO INTEGRATED GLOBAL LTD. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
