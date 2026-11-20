@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MARCK4 D-VENTURES | Invoice Generator</title>
+
+<style>
+:root {
+  --navy: #102c43;
+  --blue: #174b9b;
+  --green: #159b55;
+  --light: #f3f6f9;
+  --border: #d9e0e7;
+  --text: #243647;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #edf1f5;
+  color: var(--text);
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 22px;
+  padding: 20px;
+  align-items: start;
+}
+
+.editor {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 3px 12px #0000000c;
+}
+
+.editor h2 {
+  font-size: 19px;
+  margin-top: 0;
+}
+
+.editor h3 {
+  font-size: 13px;
+  color: var(--blue);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 8px;
+  margin-top: 23px;
+}
+
+label {
+  display: block;
+  font-size: 11px;
+  font-weight: bold;
+  margin: 12px 0 5px;
+  color: #536477;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccd5df;
+  border-radius: 5px;
+  font-size: 13px;
+  font-family: Arial;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 75px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+button {
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 12px;
+}
+
+.generate {
+  background: var(--blue);
+  color: white;
+  width: 100%;
+}
+
+.preview {
+  overflow: auto;
+}
+
+/* A4 DOCUMENT */
+
+.document {
+  width: 210mm;
+  min-height: 297mm;
+  padding: 13mm 12mm;
+  background: white;
+  margin: 0 auto 25px;
+  box-shadow: 0 4px 18px #00000012;
+  position: relative;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  page-break-after: always;
+  break-after: page;
+}
+
+.document:last-child {
+  page-break-after: auto;
+  break-after: auto;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 30mm 1fr 58mm;
+  gap: 12px;
+  align-items: start;
+  min-height: 38mm;
+}
+
+.logo {
+  width: 27mm;
+  height: 27mm;
+  object-fit: contain;
+}
+
+.logo-placeholder {
+  width: 27mm;
+  height: 27mm;
+  border: 3px solid var(--green);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--green);
+}
+
+.company {
+  font-size: 10px;
+  line-height: 1.55;
+  color: #526273;
+}
+
+.company strong {
+  display: block;
+  font-size: 16px;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+
+.doc-title {
+  text-align: right;
+}
+
+.doc-title h1 {
+  font-size: 23px;
+  margin: 0 0 9px;
+  color: var(--navy);
+}
+
+.doc-title p {
+  margin: 5px 0;
+  font-size: 10px;
+}
+
+.invoice-status {
+  color: var(--green);
+  font-weight: bold;
+}
+
+.divider {
+  height: 4px;
+  background: var(--blue);
+  margin: 12px 0 23px;
+}
+
+.receipt .divider {
+  background: var(--green);
+}
+
+.details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  min-height: 90px;
+  line-height: 1.8;
+  font-size: 11px;
+}
+
+.details .right {
+  text-align: right;
+}
+
+.section-title {
+  color: var(--blue);
+  font-weight: bold;
+  font-size: 10px;
+  margin-bottom: 5px;
+}
+
+.receipt .section-title {
+  color: var(--green);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 23px;
+}
+
+th {
+  background: var(--navy);
+  color: white;
+  text-align: left;
+  padding: 12px 9px;
+  font-size: 10px;
+  font-weight: normal;
+}
+
+td {
+  padding: 13px 9px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  line-height: 1.7;
+}
+
+.right-align {
+  text-align: right;
+}
+
+.description {
+  white-space: pre-line;
+}
+
+.summary {
+  display: grid;
+  grid-template-columns: 1fr 190px;
+  gap: 20px;
+  margin-top: 35px;
+  line-height: 1.7;
+}
+
+.amount-words {
+  font-style: italic;
+  font-weight: bold;
+  margin-top: 7px;
+}
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.grand-total {
+  background: var(--navy);
+  color: white;
+  padding: 11px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.terms {
+  margin-top: 36px;
+  font-size: 10px;
+  line-height: 1.8;
+}
+
+.terms strong {
+  font-size: 11px;
+}
+
+.signatures {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 35px;
+  margin: 65px 35px 0;
+  text-align: center;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.signature {
+  border-top: 1px solid var(--navy);
+  padding-top: 8px;
+  position: relative;
+  min-height: 28px;
+}
+
+.signature img {
+  position: absolute;
+  width: 120px;
+  height: 55px;
+  object-fit: contain;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.received-by {
+  position: absolute;
+  bottom: 35px;
+  left: 12mm;
+  right: 12mm;
+  text-align: center;
+}
+
+.receipt .doc-title h1 {
+  color: var(--green);
+}
+
+.receipt th {
+  background: var(--navy);
+}
+
+.receipt .grand-total {
+  background: var(--green);
+}
+
+.receipt .amount {
+  color: var(--green);
+  font-weight: bold;
+}
+
+.receipt .summary {
+  margin-top: 25px;
+}
+
+.receipt .signatures {
+  margin-top: 70px;
+}
+
+@media(max-width: 900px) {
+  .app {
+    grid-template-columns: 1fr;
+    padding: 10px;
+  }
+
+  .document {
+    margin-left: 0;
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  body {
+    background: white;
+  }
+
+  .editor {
+    display: none !important;
+  }
+
+  .app {
+    display: block;
+    padding: 0;
+  }
+
+  .document {
+    width: 210mm;
+    height: 297mm;
+    min-height: 297mm;
+    margin: 0;
+    box-shadow: none;
+    overflow: hidden;
+  }
+
+  .preview {
+    overflow: visible;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<!-- EDITOR -->
+
+<aside class="editor">
+
+<h2>MARCK4 D-VENTURES</h2>
+<p>Automatic Invoice & Receipt Generator</p>
+
+<h3>DOCUMENT INFORMATION</h3>
+
+<div class="grid">
+<div>
+<label>Invoice Number</label>
+<input id="invoiceNo" value="INV-0055">
+</div>
+<div>
+<label>Receipt Number</label>
+<input id="receiptNo" value="REC-0055">
+</div>
+</div>
+
+<label>Invoice Date</label>
+<input type="date" id="date" value="2026-11-08">
+
+<label>Payment Status</label>
+<select id="status">
+<option>PAID IN FULL</option>
+<option>PARTIALLY PAID</option>
+<option>PENDING</option>
+</select>
+
+<h3>CUSTOMER INFORMATION</h3>
+
+<label>Customer Name</label>
+<input id="customer" value="Mr Adamu Chindo">
+
+<label>Customer Address</label>
+<input id="address" value="No. 1 Golf Course Close, Angwan Rimi, Kaduna">
+
+<div class="grid">
+<div>
+<label>Phone Number</label>
+<input id="phone" value="08050962397">
+</div>
+<div>
+<label>Email Address</label>
+<input id="email" value="adamuchindo5@gmail.com">
+</div>
+</div>
+
+<h3>PRODUCT / VEHICLE DETAILS</h3>
+
+<label>Product or Vehicle Name</label>
+<input id="product" value="Toyota Highlander">
+
+<label>Product Description</label>
+<textarea id="description">Vehicle make: Toyota Highlander
+Model: 2005
+Colour: Ash
+Chassis No: JTEHP21A350132478
+VREG CERT No: V4928-160726-229-TE5</textarea>
+
+<div class="grid">
+<div>
+<label>Quantity</label>
+<input type="number" id="quantity" value="1" min="1">
+</div>
+<div>
+<label>Unit Price (₦)</label>
+<input type="number" id="price" value="8250000" min="0">
+</div>
+</div>
+
+<h3>PAYMENT INFORMATION</h3>
+
+<div class="grid">
+<div>
+<label>Discount (₦)</label>
+<input type="number" id="discount" value="0" min="0">
+</div>
+<div>
+<label>Tax Rate (%)</label>
+<input type="number" id="tax" value="0" min="0">
+</div>
+</div>
+
+<label>Amount Received (₦)</label>
+<input type="number" id="paid" value="8250000" min="0">
+
+<label>Payment Method</label>
+<input id="method" value="Confirmed Bank Settlement">
+
+<label>Authorized Signature</label>
+<input type="file" id="signature" accept="image/*">
+
+<label>Company Logo</label>
+<input type="file" id="logoUpload" accept="image/*">
+
+<h3>TERMS AND CONDITIONS</h3>
+<textarea id="terms">1. Sold and accepted as at the present condition of the vehicle.
+2. The buyer acknowledges that the vehicle is sold AS IS and delivered.
+3. The buyer confirms that he has inspected the vehicle and accepts its current condition.
+4. The seller makes no warranties or refunds regarding the vehicle's condition, performance or fitness for any purpose.</textarea>
+
+<button class="generate" onclick="window.print()">
+DOWNLOAD / PRINT PDF
+</button>
+
+<button class="generate" style="background:#159b55"
+onclick="saveData()">
+SAVE INVOICE DETAILS
+</button>
+
+</aside>
+
+
+<!-- DOCUMENT PREVIEW -->
+
+<main class="preview">
+
+<!-- TAX INVOICE -->
+
+<section class="document" id="invoice">
+
+<header class="header">
+
+<div id="logo1" class="logo-placeholder">M4</div>
+
+<div class="company">
+<strong>MARCK4 D-VENTURES</strong>
+BN: 3705650<br>
+Importation of used vehicles, Export & Distributor Sunflower Oil and Agro Related<br>
+Address: Plot 19, Road 23, FHA, Gonin, Kaduna.<br>
+Email: emereole.bm@gmail.com<br>
+Phone No: 08023445713
+</div>
+
+<div class="doc-title">
+<h1>TAX INVOICE</h1>
+<p>INVOICE NO: <b id="outInvoice">INV-0055</b></p>
+<p>DATE OF ISSUE: <span id="outDate">8th Nov 2026</span></p>
+<p>PAYMENT STATUS: <span class="invoice-status" id="outStatus">PAID IN FULL</span></p>
+</div>
+
+</header>
+
+<div class="divider"></div>
+
+<div class="details">
+
+<div>
+<div class="section-title">BILL TO:</div>
+<strong id="outCustomer">Mr Adamu Chindo</strong><br>
+Address: <span id="outAddress"></span><br>
+Phone No: <span id="outPhone"></span><br>
+Email: <span id="outEmail"></span>
+</div>
+
+<div class="right">
+Due Date: Due on Receipt<br>
+Currency: Nigerian Naira (NGN)
+</div>
+
+</div>
+
+<table>
+<thead>
+<tr>
+<th style="width:9%">QTY</th>
+<th>DESCRIPTION</th>
+<th class="right-align">PRICE</th>
+<th class="right-align">AMOUNT</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td id="outQuantity">1</td>
+<td>
+<strong id="outProduct">Toyota Highlander</strong>
+<div class="description" id="outDescription"></div>
+</td>
+<td class="right-align" id="outPrice"></td>
+<td class="right-align"><strong id="outAmount"></strong></td>
+</tr>
+</tbody>
+</table>
+
+<div class="summary">
+
+<div>
+Amount In Words:
+<div class="amount-words" id="outWords"></div>
+</div>
+
+<div>
+<div class="total-row">
+<span>Subtotal:</span>
+<strong id="outSubtotal"></strong>
+</div>
+
+<div class="total-row">
+<span>Discount:</span>
+<strong id="outDiscount"></strong>
+</div>
+
+<div class="total-row">
+<span>Tax Rate:</span>
+<strong id="outTax"></strong>
+</div>
+
+<div class="grand-total">
+<span>Total</span>
+<strong id="outTotal"></strong>
+</div>
+</div>
+
+</div>
+
+<div class="terms">
+<strong>TERMS AND CONDITION</strong>
+<div id="outTerms"></div>
+</div>
+
+<div class="signatures">
+
+<div class="signature">
+CUSTOMER'S SIGNATURE
+</div>
+
+<div class="signature">
+<img id="sig1" style="display:none">
+AUTHORIZED SIGNATURE
+</div>
+
+</div>
+
+<div class="received-by">
+Received By: _______________________________________________
+</div>
+
+</section>
+
+
+<!-- OFFICIAL RECEIPT -->
+
+<section class="document receipt" id="receipt">
+
+<header class="header">
+
+<div id="logo2" class="logo-placeholder">M4</div>
+
+<div class="company">
+<strong>MARCK4 D-VENTURES</strong>
+BN: 3705650<br>
+Importation of used vehicles, Export & Distributor Sunflower Oil and Agro Related<br>
+Address: Plot 19, Road 23, FHA, Gonin, Kaduna.<br>
+Email: emereole.bm@gmail.com<br>
+Phone No: 08023445713
+</div>
+
+<div class="doc-title">
+<h1>OFFICIAL RECEIPT</h1>
+<p>RECEIPT NO: <b id="outReceipt">REC-0055</b></p>
+<p>INVOICE REF: <b id="outInvoice2">INV-0055</b></p>
+<p>RECEIPT DATE: <span id="outDate2"></span></p>
+</div>
+
+</header>
+
+<div class="divider"></div>
+
+<div class="details">
+
+<div>
+<div class="section-title">RECEIVED FROM:</div>
+<strong id="outCustomer2"></strong><br>
+Address: <span id="outAddress2"></span>
+</div>
+
+<div class="right">
+Payment Method: <span id="outMethod"></span><br>
+Status: <strong class="invoice-status" id="outReceiptStatus"></strong>
+</div>
+
+</div>
+
+<table>
+
+<thead>
+<tr>
+<th>DESCRIPTION / PAYMENT PARTICULARS</th>
+<th class="right-align">AMOUNT (₦)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>
+Being payment for the purchase of
+<strong id="outProduct2"></strong><br>
+<span id="outChassis"></span><br>
+Amount: <span id="outWords2"></span>
+</td>
+<td class="right-align amount" id="outReceived"></td>
+</tr>
+
+<tr>
+<td><strong>Total Invoice Amount</strong></td>
+<td class="right-align" id="outReceiptTotal"></td>
+</tr>
+
+<tr>
+<td><strong>Total Payment Received</strong></td>
+<td class="right-align" id="outPaid"></td>
+</tr>
+
+</tbody>
+
+</table>
+
+<div class="summary">
+
+<div>
+TOTAL AMOUNT RECEIVED IN WORDS:
+<div class="amount-words" id="outPaidWords"></div>
+</div>
+
+<div>
+<div class="grand-total">
+<span>Balance</span>
+<strong id="outBalance"></strong>
+</div>
+</div>
+
+</div>
+
+<div style="margin-top:35px;line-height:1.7">
+We acknowledge receipt of the payment stated above.
+</div>
+
+<div class="signatures">
+
+<div class="signature">
+CUSTOMER'S SIGNATURE
+</div>
+
+<div class="signature">
+<img id="sig2" style="display:none">
+AUTHORIZED SIGNATURE
+</div>
+
+</div>
+
+</section>
+
+</main>
+</div>
+
+
+<script>
+
+// SHORTCUTS
+
+const $ = id => document.getElementById(id);
+
+const fields = [
+'invoiceNo','receiptNo','date','status',
+'customer','address','phone','email',
+'product','description','quantity','price',
+'discount','tax','paid','method','terms'
+];
+
+function money(value) {
+return '₦' + Number(value).toLocaleString('en-NG',{
+minimumFractionDigits:2,
+maximumFractionDigits:2
+});
+}
+
+
+// AMOUNT IN WORDS
+
+function words(n) {
+
+n = Math.floor(Math.abs(n));
+
+if(n === 0) return 'Zero Naira Only';
+
+const ones = [
+'','One','Two','Three','Four','Five','Six',
+'Seven','Eight','Nine','Ten','Eleven',
+'Twelve','Thirteen','Fourteen','Fifteen',
+'Sixteen','Seventeen','Eighteen','Nineteen'
+];
+
+const tens = [
+'','','Twenty','Thirty','Forty','Fifty',
+'Sixty','Seventy','Eighty','Ninety'
+];
+
+function convert(x) {
+let result = '';
+
+if(x >= 100) {
+result += ones[Math.floor(x/100)] + ' Hundred ';
+x %= 100;
+}
+
+if(x >= 20) {
+result += tens[Math.floor(x/10)];
+x %= 10;
+if(x) result += '-' + ones[x];
+}
+else if(x > 0) {
+result += ones[x];
+}
+
+return result.trim();
+}
+
+let result = '';
+
+const groups = [
+[1000000000,'Billion'],
+[1000000,'Million'],
+[1000,'Thousand'],
+[1,'']
+];
+
+groups.forEach(([value,name]) => {
+let amount = Math.floor(n/value);
+
+if(amount > 0) {
+result += convert(amount) + ' ' + name + ' ';
+n %= value;
+}
+});
+
+return result.trim() + ' Naira Only';
+}
+
+
+// DATE FORMAT
+
+function formatDate(date) {
+
+if(!date) return '';
+
+const d = new Date(date + 'T00:00:00');
+
+const day = d.getDate();
+
+const suffix =
+day % 10 === 1 && day !== 11 ? 'st' :
+day % 10 === 2 && day !== 12 ? 'nd' :
+day % 10 === 3 && day !== 13 ? 'rd' : 'th';
+
+return day + suffix + ' ' +
+d.toLocaleString('en-GB',{
+month:'short',
+year:'numeric'
+});
+}
+
+
+// UPDATE DOCUMENT
+
+function updateInvoice() {
+
+const get = id => $(id).value;
+
+const subtotal =
+Number(get('price')) * Number(get('quantity'));
+
+const discount = Number(get('discount')) || 0;
+const taxRate = Number(get('tax')) || 0;
+
+const taxable = Math.max(0,subtotal-discount);
+
+const total = taxable + (taxable*taxRate/100);
+
+const paid = Math.min(
+total,
+Math.max(0,Number(get('paid')) || 0)
+);
+
+const balance = Math.max(0,total-paid);
+
+const receivedWords = words(paid);
+const totalWords = words(total);
+
+const date = formatDate(get('date'));
+
+const set = (id,value) => {
+$(id).textContent = value;
+};
+
+
+// INVOICE INFORMATION
+
+set('outInvoice',get('invoiceNo'));
+set('outInvoice2',get('invoiceNo'));
+set('outReceipt',get('receiptNo'));
+
+set('outDate',date);
+set('outDate2',date);
+
+set('outStatus',get('status'));
+
+set('outCustomer',get('customer'));
+set('outCustomer2',get('customer'));
+
+set('outAddress',get('address'));
+set('outAddress2',get('address'));
+
+set('outPhone',get('phone'));
+set('outEmail',get('email'));
+
+set('outProduct',get('product'));
+set('outProduct2',get('product'));
+
+set('outDescription',get('description'));
+
+set('outQuantity',get('quantity'));
+
+set('outPrice',money(get('price')));
+set('outAmount',money(subtotal));
+
+set('outWords',totalWords);
+
+set('outSubtotal',money(subtotal));
+
+set('outDiscount',discount ? money(discount) : 'Nil');
+
+set('outTax',taxRate.toFixed(2) + '%');
+
+set('outTotal',money(total));
+
+set('outTerms',get('terms'));
+
+
+// RECEIPT INFORMATION
+
+set('outMethod',get('method'));
+
+set('outReceiptStatus',
+balance === 0 ? 'Full Payment Received' :
+paid > 0 ? 'Part Payment Received' :
+'Payment Pending'
+);
+
+const chassis = get('description').match(/Chassis No:?.*/i);
+
+set('outChassis',chassis ? chassis[0] : '');
+
+set('outWords2',totalWords);
+
+set('outReceived',money(paid));
+
+set('outReceiptTotal',money(total));
+
+set('outPaid',money(paid));
+
+set('outPaidWords',receivedWords);
+
+set('outBalance',money(balance));
+
+}
+
+
+// AUTOMATIC UPDATES
+
+fields.forEach(id => {
+$(id).addEventListener('input',updateInvoice);
+$(id).addEventListener('change',updateInvoice);
+});
+
+
+// LOGO UPLOAD
+
+$('logoUpload').addEventListener('change',function(e){
+
+const file = e.target.files[0];
+
+if(!file) return;
+
+const reader = new FileReader();
+
+reader.onload = function(event) {
+
+['logo1','logo2'].forEach(id => {
+
+const img = document.createElement('img');
+
+img.src = event.target.result;
+img.className = 'logo';
+
+$(id).replaceWith(img);
+
+});
+
+};
+
+reader.readAsDataURL(file);
+
+});
+
+
+// SIGNATURE UPLOAD
+
+$('signature').addEventListener('change',function(e){
+
+const file = e.target.files[0];
+
+if(!file) return;
+
+const reader = new FileReader();
+
+reader.onload = function(event) {
+
+['sig1','sig2'].forEach(id => {
+
+$(id).src = event.target.result;
+$(id).style.display = 'block';
+
+});
+
+};
+
+reader.readAsDataURL(file);
+
+});
+
+
+// SAVE DETAILS
+
+function saveData() {
+
+const data = {};
+
+fields.forEach(id => {
+data[id] = $(id).value;
+});
+
+localStorage.setItem(
+'marck4_invoice_data',
+JSON.stringify(data)
+);
+
+alert('Invoice details saved successfully.');
+
+}
+
+
+// RESTORE SAVED DETAILS
+
+window.addEventListener('DOMContentLoaded',function(){
+
+const saved = localStorage.getItem('marck4_invoice_data');
+
+if(saved) {
+
+try {
+
+const data = JSON.parse(saved);
+
+fields.forEach(id => {
+
+if(data[id] !== undefined) {
+$(id).value = data[id];
+}
+
+});
+
+} catch(e) {}
+
+}
+
+updateInvoice();
+
+});
+
+</script>
+
+</body>
+</html>
