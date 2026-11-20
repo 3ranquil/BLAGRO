@@ -42,6 +42,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+    ],
+    apple: [
+      { url: '/favicon.svg' },
+    ],
+  },
   openGraph: {
     title: 'BL AGRO INTEGRATED GLOBAL LTD | Direct Farm-Gate Agro & Solid Minerals Export',
     description: 'Certified Nigerian agricultural commodities and high-purity solid minerals delivered with reliable international export benchmark compliance.',
