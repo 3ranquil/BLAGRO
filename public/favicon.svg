@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Rounded emerald container matching the brand theme -->
+  <rect width="64" height="64" rx="16" fill="#059669"/>
+  <!-- Subtle gradient highlight overlay -->
+  <rect width="64" height="64" rx="16" fill="url(#paint0_linear)" fill-opacity="0.25"/>
+  <!-- Brand Agro Leaf Icon -->
+  <path d="M47.2 16.8C35.5 16.5 22.8 23.4 18.2 34.6C16.8 38.1 16.4 41.9 17.1 45.6C17.4 47.1 18.9 48 20.4 47.7C24.1 47 27.9 46.6 31.4 45.2C42.6 40.6 49.5 27.9 47.2 16.8Z" fill="white"/>
+  <path d="M21.5 42.5C28 36 34.5 29.5 41 23" stroke="#059669" stroke-width="3" stroke-linecap="round"/>
+  <defs>
+    <linearGradient id="paint0_linear" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop stop-color="white"/>
+      <stop offset="1" stop-color="black" stop-opacity="0.3"/>
+    </linearGradient>
+  </defs>
+</svg>
