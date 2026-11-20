@@ -10,6 +10,26 @@ interface InvoiceData {
   details?: Record<string, unknown>;
 }
 
+/**
+ * @function getBlobStore
+ * @description Helper to connect to Netlify Blobs using environment variables if present
+ */
+async function getBlobStore() {
+  const { getStore } = await import("@netlify/blobs");
+  const siteID = process.env.NETLIFY_SITE_ID;
+  const token = process.env.NETLIFY_AUTH_TOKEN;
+
+  if (siteID && token) {
+    return getStore({
+      name: "blagro-invoices",
+      siteID,
+      token,
+    });
+  }
+
+  return getStore({ name: "blagro-invoices" });
+}
+
 // GET: returns the next invoice number and receipt number
 export async function GET() {
   try {
@@ -17,8 +37,7 @@ export async function GET() {
     let nextCounter = 56; // default starting counter after template 0055
 
     try {
-      const { getStore } = await import("@netlify/blobs");
-      const store = getStore({ name: "blagro-invoices" });
+      const store = await getBlobStore();
       const rawCounter = await store.get("counter", { type: "text" });
       const rawInvoices = await store.get("invoice_list", { type: "text" });
 
@@ -61,8 +80,7 @@ export async function POST(req: Request) {
     let nextCounter = 56;
 
     try {
-      const { getStore } = await import("@netlify/blobs");
-      const store = getStore({ name: "blagro-invoices" });
+      const store = await getBlobStore();
       const currentCounterStr = await store.get("counter", { type: "text" });
       const currentCounter = currentCounterStr
         ? parseInt(String(currentCounterStr), 10)
