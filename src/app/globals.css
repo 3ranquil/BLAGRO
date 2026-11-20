@@ -1,0 +1,203 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text_gradient_emerald {
+    background: linear-gradient(90deg, #10b981, #34d399, #059669);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.input_field_standard {
+  width: 100%;
+  background-color: #fafafa;
+  border: 1px solid #e4e4e7;
+  border-radius: 0.75rem;
+  padding: 0.5rem 0.85rem;
+  font-size: 0.875rem;
+  color: #18181b;
+  transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+  outline: none;
+}
+select.input_field_standard {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2371717a'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.85rem center;
+  background-size: 1rem;
+  padding-right: 2.25rem;
+  cursor: pointer;
+}
+.dark select.input_field_standard {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23a1a1aa'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+}
+.dark .input_field_standard {
+  background-color: #27272a;
+  border-color: #3f3f46;
+  color: #f4f4f5;
+}
+.input_field_standard:focus {
+  border-color: #059669;
+  background-color: #ffffff;
+}
+.dark .input_field_standard:focus {
+  border-color: #10b981;
+  background-color: #18181b;
+}
+
+.label_standard {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #52525b;
+  display: block;
+  margin-bottom: 0.25rem;
+  transition: color 0.15s ease;
+}
+.dark .label_standard {
+  color: #a1a1aa;
+}
+
+/* Fluid scroll behavior */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  position: relative;
+  width: 100%;
+}
+
+/* Keyframe animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.25; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(1.05); }
+}
+
+@keyframes borderRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate_float {
+  animation: float 5s ease-in-out infinite;
+}
+
+.animate_pulse_glow {
+  animation: pulseGlow 6s ease-in-out infinite;
+}
+
+/* Glimmer border animation */
+.glimmer_border_wrapper {
+  position: relative;
+  padding: 3px;
+  border-radius: 9999px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.glimmer_border_wrapper::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    rgba(16, 185, 129, 0.15) 30%,
+    rgba(52, 211, 153, 0.8) 50%,
+    rgba(16, 185, 129, 0.15) 70%,
+    transparent 100%
+  );
+  animation: borderRotate 4s linear infinite;
+}
+
+.dark .glimmer_border_wrapper::before {
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    rgba(5, 150, 105, 0.2) 30%,
+    rgba(52, 211, 153, 0.95) 50%,
+    rgba(110, 231, 183, 0.3) 70%,
+    transparent 100%
+  );
+}
+
+.glimmer_border_content {
+  position: relative;
+  border-radius: 9999px;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+}
+.dark .glimmer_border_content {
+  background: #18181b;
+}
+
+/* Card hover scaling and transitions */
+.card_interactive {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+}
+
+.card_interactive:hover {
+  transform: translateY(-6px);
+}
+
+/* Exact A4 Portrait Dimensions */
+@page {
+  size: A4 portrait;
+  margin: 0;
+}
+
+.page_a4 {
+  width: 210mm;
+  height: 297mm;
+  min-height: 297mm;
+  max-height: 297mm;
+  padding: 12mm 14mm;
+  background: #ffffff;
+  box-sizing: border-box;
+  page-break-after: always;
+  position: relative;
+  overflow: hidden;
+}
+
+@media print {
+  body {
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .no_print {
+    display: none !important;
+  }
+  .page_a4 {
+    box-shadow: none !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+}
+
+/* Respect user preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
