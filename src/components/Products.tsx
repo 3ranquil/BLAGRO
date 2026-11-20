@@ -1,13 +1,25 @@
 import Image from 'next/image';
 import { AnimateOnScroll } from './AnimateOnScroll';
 
-const commodities = [
+interface Commodity {
+  title: string;
+  tag: string;
+  tagColor: string;
+  description: string;
+  image?: string;
+  images?: string[];
+}
+
+const commodities: Commodity[] = [
   {
     title: 'Dried Ginger',
     tag: 'Premium Grade A',
     tagColor: 'text-orange-700 bg-orange-50 dark:bg-orange-950/40 dark:text-orange-300 border-orange-200 dark:border-orange-800/60',
     description: 'Expertly sun-dried and split ginger roots with high concentration of essential oils for industrial use.',
-    image: '/assets/commodities/ginger.jpg',
+    images: [
+      '/assets/commodities/ginger-1.jpg',
+      '/assets/commodities/ginger-2.jpg',
+    ],
   },
   {
     title: 'Hibiscus Flowers',
@@ -84,13 +96,29 @@ export default function Products() {
             >
               <div>
                 <div className="relative w-full h-44 sm:h-48 rounded-2xl overflow-hidden mb-6 shadow-sm border border-zinc-100 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-800 group">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  />
+                  {item.images ? (
+                    <div className="grid grid-cols-2 gap-1 w-full h-full">
+                      {item.images.map((imgSrc, imgIdx) => (
+                        <div key={imgIdx} className="relative w-full h-full overflow-hidden">
+                          <Image
+                            src={imgSrc}
+                            alt={`${item.title} ${imgIdx + 1}`}
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-500"
+                            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 17vw"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <Image
+                      src={item.image!}
+                      alt={item.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  )}
                 </div>
                 <h3 className="font-black text-xl sm:text-2xl text-zinc-900 dark:text-white mb-2.5 tracking-tight">
                   {item.title}
