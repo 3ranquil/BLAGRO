@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import jsPDF from "jspdf";
-import html2canvas from "html2canvas";
+import html2canvas from "html2canvas-pro";
 import { numberToNairaWords } from "@/lib/numberToWords";
 import {
   PaymentStatus,
@@ -132,7 +132,8 @@ export default function InvoicePage() {
   const handleDownloadPDF = async () => {
     setIsGeneratingPdf(true);
     try {
-      await saveInvoiceRecord();
+      // Fire save in background without letting it block or hang PDF download
+      saveInvoiceRecord().catch((e) => console.warn("Save record background notice:", e));
 
       const page1El = document.getElementById("invoice-page-1");
       const page2El = document.getElementById("invoice-page-2");
@@ -147,23 +148,30 @@ export default function InvoicePage() {
       );
       const filename = `${form.invoiceNo || "INV"}_${cleanClient}.pdf`;
 
+      // Helper to render an element via html2canvas with timeout
+      const renderPageCanvas = async (element: HTMLElement) => {
+        return Promise.race([
+          html2canvas(element, {
+            scale: 2,
+            useCORS: true,
+            allowTaint: true,
+            scrollY: 0,
+            scrollX: 0,
+            backgroundColor: "#ffffff",
+            logging: false,
+            imageTimeout: 5000,
+          }),
+          new Promise<never>((_, reject) =>
+            setTimeout(() => reject(new Error("html2canvas render timed out")), 10000),
+          ),
+        ]);
+      };
+
       // Render Page 1 to high-resolution canvas
-      const canvas1 = await html2canvas(page1El, {
-        scale: 2,
-        useCORS: true,
-        scrollY: 0,
-        backgroundColor: "#ffffff",
-        logging: false,
-      });
+      const canvas1 = await renderPageCanvas(page1El);
 
       // Render Page 2 to high-resolution canvas
-      const canvas2 = await html2canvas(page2El, {
-        scale: 2,
-        useCORS: true,
-        scrollY: 0,
-        backgroundColor: "#ffffff",
-        logging: false,
-      });
+      const canvas2 = await renderPageCanvas(page2El);
 
       // Create exact A4 portrait PDF document (210mm x 297mm)
       const pdf = new jsPDF({
@@ -184,7 +192,7 @@ export default function InvoicePage() {
       pdf.save(filename);
     } catch (err) {
       console.error("PDF generation error:", err);
-      window.print();
+      alert("Unable to generate PDF directly. Please check browser console or use the Print button.");
     } finally {
       setIsGeneratingPdf(false);
     }
@@ -205,11 +213,16 @@ export default function InvoicePage() {
         },
       };
 
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 4000);
+
       await fetch("/api/invoices", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
+        signal: controller.signal,
       });
+      clearTimeout(timeoutId);
 
       const numMatch = form.invoiceNo.match(/\d+/);
       const nextNum = numMatch ? parseInt(numMatch[0], 10) + 1 : 56;

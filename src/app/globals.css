@@ -1,14 +1,29 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-@layer utilities {
-  .text_gradient_emerald {
-    background: linear-gradient(90deg, #10b981, #34d399, #059669);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-brand-primary: #059669;
+  --color-brand-primary_hover: #047857;
+  --color-brand-primary_light: #ecfdf5;
+  --color-brand-primary_border: #a7f3d0;
+  --color-brand-invoice_blue: #1e3a8a;
+  --color-brand-invoice_blue_header: #172554;
+  --color-brand-invoice_blue_light: #eff6ff;
+  --color-brand-invoice_blue_border: #bfdbfe;
+  --color-brand-receipt_green: #065f46;
+  --color-brand-receipt_green_header: #064e3b;
+  --color-brand-receipt_green_light: #ecfdf5;
+  --color-brand-receipt_green_border: #a7f3d0;
+  --color-brand-dark: #09090b;
+  --color-brand-surface: #18181b;
+}
+
+@utility text_gradient_emerald {
+  background: linear-gradient(90deg, #10b981, #34d399, #059669);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .input_field_standard {
@@ -172,23 +187,47 @@ body {
   background: #ffffff;
   box-sizing: border-box;
   page-break-after: always;
+  break-after: page;
   position: relative;
   overflow: hidden;
 }
 
 @media print {
-  body {
-    background: transparent !important;
+  html, body {
+    background: #ffffff !important;
     padding: 0 !important;
     margin: 0 !important;
+    width: 210mm !important;
+    height: auto !important;
+    overflow: visible !important;
   }
   .no_print {
     display: none !important;
   }
+  /* Hide everything on the page except the printable document */
+  body * {
+    visibility: hidden;
+  }
+  #printable-document,
+  #printable-document * {
+    visibility: visible;
+  }
+  #printable-document {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 210mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+  }
   .page_a4 {
     box-shadow: none !important;
     margin: 0 !important;
-    width: 100% !important;
+    width: 210mm !important;
+    height: 297mm !important;
+    page-break-after: always !important;
+    break-after: page !important;
   }
 }
 
